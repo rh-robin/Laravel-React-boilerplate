@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,13 +11,15 @@
         <script>
             // Synchronously apply theme before paint to prevent flicker
             (function () {
-                const savedTheme = localStorage.getItem('theme');
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (savedTheme === 'light') {
-                    document.documentElement.classList.remove('dark');
-                } else if (savedTheme === 'dark' || prefersDark || !savedTheme) {
-                    document.documentElement.classList.add('dark');
-                }
+                try {
+                    const savedTheme = localStorage.getItem('theme');
+                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    if (savedTheme === 'light') {
+                        document.documentElement.classList.remove('dark');
+                    } else if (savedTheme === 'dark' || prefersDark || !savedTheme) {
+                        document.documentElement.classList.add('dark');
+                    }
+                } catch (e) {}
             })();
         </script>
 

@@ -20,16 +20,16 @@ export default function Index({ supervisors }) {
             <Head title="Supervisors — TTECH SUITES" />
 
             <div className="space-y-6">
-                <div className="rounded-2xl bg-[#0F172A] border border-slate-800/80 p-6 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800/80 p-6 shadow-sm dark:shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div className="flex items-center gap-3.5">
-                        <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400">
+                        <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
                             <ShieldAlert className="w-6 h-6" />
                         </div>
                         <div>
-                            <h2 className="text-xl font-bold text-white tracking-tight">
+                            <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
                                 Supervisors &amp; System Administrators
                             </h2>
-                            <p className="text-xs text-slate-400 mt-0.5">
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                                 High-privilege team members with console administrative access
                             </p>
                         </div>
@@ -37,18 +37,18 @@ export default function Index({ supervisors }) {
 
                     <Link
                         href="/admin/users"
-                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-xs tracking-wide bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-all"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-xs tracking-wide bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-all cursor-pointer"
                     >
                         <Plus className="w-4 h-4" />
                         <span>Manage In Users</span>
                     </Link>
                 </div>
 
-                <div className="rounded-2xl bg-[#0F172A] border border-slate-800/80 shadow-xl overflow-hidden">
+                <div className="rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800/80 shadow-sm dark:shadow-xl overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="border-b border-slate-800/60 bg-slate-900/40 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                                <tr className="border-b border-slate-200 dark:border-slate-800/60 bg-slate-50/75 dark:bg-slate-900/40 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                                     <th className="py-3.5 px-6">SUPERVISOR</th>
                                     <th className="py-3.5 px-6">USERNAME</th>
                                     <th className="py-3.5 px-6">EMAIL</th>
@@ -56,11 +56,11 @@ export default function Index({ supervisors }) {
                                     <th className="py-3.5 px-6">STATUS</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-800/40 text-xs">
+                            <tbody className="divide-y divide-slate-100 dark:divide-slate-800/40 text-xs">
                                 {supervisors && supervisors.length > 0 ? (
                                     supervisors.map((s) => (
-                                        <tr key={s.id} className="hover:bg-slate-800/30 transition-colors">
-                                            <td className="py-4 px-6 font-semibold text-slate-200">
+                                        <tr key={s.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                            <td className="py-4 px-6 font-semibold text-slate-800 dark:text-slate-200">
                                                 <div className="flex items-center gap-3">
                                                     <div className="w-9 h-9 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center ring-2 ring-indigo-500/20">
                                                         {getInitials(s.name)}
@@ -71,20 +71,20 @@ export default function Index({ supervisors }) {
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td className="py-4 px-6 font-mono text-slate-400">
+                                            <td className="py-4 px-6 font-mono text-slate-600 dark:text-slate-400">
                                                 {s.username}
                                             </td>
-                                            <td className="py-4 px-6 text-slate-300">
+                                            <td className="py-4 px-6 text-slate-700 dark:text-slate-300">
                                                 {s.email}
                                             </td>
                                             <td className="py-4 px-6">
-                                                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                                                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
                                                     <ShieldCheck className="w-3 h-3" />
                                                     <span>Admin Privilege</span>
                                                 </span>
                                             </td>
                                             <td className="py-4 px-6">
-                                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                                                     {s.is_active ? 'Active' : 'Inactive'}
                                                 </span>
                                             </td>

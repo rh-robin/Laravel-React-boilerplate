@@ -141,16 +141,16 @@ export default function Index({ posts, categories, filters }) {
 
             <div className="space-y-6">
                 {/* Header Card */}
-                <div className="rounded-2xl bg-[#0F172A] border border-slate-800/80 p-6 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800/80 p-6 shadow-sm dark:shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div className="flex items-center gap-3.5">
-                        <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400">
+                        <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
                             <FileText className="w-6 h-6" />
                         </div>
                         <div>
-                            <h2 className="text-xl font-bold text-white tracking-tight">
+                            <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
                                 Blog Articles Listing
                             </h2>
-                            <p className="text-xs text-slate-400 mt-0.5">
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                                 Search, filter, arrange, and manage your system blog articles
                             </p>
                         </div>
@@ -158,7 +158,7 @@ export default function Index({ posts, categories, filters }) {
 
                     <button
                         onClick={openCreateModal}
-                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-xs tracking-wide bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-xs tracking-wide bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
                     >
                         <Plus className="w-4 h-4" />
                         <span>Create Article</span>
@@ -166,10 +166,10 @@ export default function Index({ posts, categories, filters }) {
                 </div>
 
                 {/* Filter & Search Bar */}
-                <div className="rounded-2xl bg-[#0F172A] border border-slate-800/80 p-4 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800/80 p-4 shadow-sm dark:shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
                     {/* Search Input */}
                     <div className="relative w-full md:w-96">
-                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 dark:text-slate-500">
                             <Search className="w-4 h-4" />
                         </div>
                         <input
@@ -177,7 +177,7 @@ export default function Index({ posts, categories, filters }) {
                             value={search}
                             onChange={handleSearchChange}
                             placeholder="Search by title, tags, or content..."
-                            className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                            className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                         />
                     </div>
 
@@ -186,7 +186,7 @@ export default function Index({ posts, categories, filters }) {
                         <select
                             value={categoryFilter}
                             onChange={handleCategoryChange}
-                            className="px-3.5 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                            className="px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                         >
                             <option value="">All Categories</option>
                             {categories.map((c) => (
@@ -199,7 +199,7 @@ export default function Index({ posts, categories, filters }) {
                         <select
                             value={statusFilter}
                             onChange={handleStatusChange}
-                            className="px-3.5 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                            className="px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                         >
                             <option value="">All Statuses</option>
                             <option value="published">Published</option>
@@ -209,11 +209,11 @@ export default function Index({ posts, categories, filters }) {
                 </div>
 
                 {/* Data Table Container */}
-                <div className="rounded-2xl bg-[#0F172A] border border-slate-800/80 shadow-xl overflow-hidden">
+                <div className="rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800/80 shadow-sm dark:shadow-xl overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="border-b border-slate-800/60 bg-slate-900/40 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                                <tr className="border-b border-slate-200 dark:border-slate-800/60 bg-slate-50/75 dark:bg-slate-900/40 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                                     <th className="py-3 px-6">COVER</th>
                                     <th className="py-3 px-6">TITLE</th>
                                     <th className="py-3 px-6">CATEGORY</th>
@@ -225,19 +225,19 @@ export default function Index({ posts, categories, filters }) {
                                     <th className="py-3 px-6 text-right">ACTIONS</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-800/40 text-xs">
+                            <tbody className="divide-y divide-slate-100 dark:divide-slate-800/40 text-xs">
                                 {posts.data && posts.data.length > 0 ? (
                                     posts.data.map((item) => (
-                                        <tr key={item.id} className="hover:bg-slate-800/30 transition-colors">
+                                        <tr key={item.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
                                             <td className="py-3 px-6">
                                                 <img
                                                     src={item.cover_image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=120&q=80'}
                                                     alt={item.title}
-                                                    className="w-12 h-9 rounded-lg object-cover border border-slate-800 shadow-sm"
+                                                    className="w-12 h-9 rounded-lg object-cover border border-slate-200 dark:border-slate-800 shadow-sm"
                                                 />
                                             </td>
                                             <td className="py-3 px-6 max-w-xs">
-                                                <div className="font-semibold text-slate-200 line-clamp-1">
+                                                <div className="font-semibold text-slate-800 dark:text-slate-200 line-clamp-1">
                                                     {item.title}
                                                 </div>
                                                 <div className="text-[11px] text-slate-500 truncate mt-0.5">
@@ -261,24 +261,24 @@ export default function Index({ posts, categories, filters }) {
                                                     {item.tags?.map((t, idx) => (
                                                         <span
                                                             key={idx}
-                                                            className="px-1.5 py-0.5 rounded bg-slate-800/80 text-[10px] text-slate-400 font-medium"
+                                                            className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800/80 text-[10px] text-slate-600 dark:text-slate-400 font-medium"
                                                         >
                                                             #{t.trim()}
                                                         </span>
                                                     ))}
                                                 </div>
                                             </td>
-                                            <td className="py-3 px-6 text-slate-300 font-medium whitespace-nowrap">
+                                            <td className="py-3 px-6 text-slate-700 dark:text-slate-300 font-medium whitespace-nowrap">
                                                 {item.read_time} mins
                                             </td>
                                             <td className="py-3 px-6">
                                                 <button
                                                     onClick={() => toggleFeatured(item)}
                                                     title={item.is_featured ? 'Unmark featured' : 'Mark featured'}
-                                                    className={`p-1.5 rounded-lg border transition-colors ${
+                                                    className={`p-1.5 rounded-lg border transition-colors cursor-pointer ${
                                                         item.is_featured
-                                                            ? 'border-indigo-500/30 bg-indigo-500/15 text-indigo-400'
-                                                            : 'border-slate-800 bg-slate-900/50 text-slate-600 hover:text-slate-400'
+                                                            ? 'border-indigo-500/30 bg-indigo-500/15 text-indigo-600 dark:text-indigo-400'
+                                                            : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'
                                                     }`}
                                                 >
                                                     <Star className="w-3.5 h-3.5 fill-current" />
@@ -287,27 +287,27 @@ export default function Index({ posts, categories, filters }) {
                                             <td className="py-3 px-6">
                                                 <button
                                                     onClick={() => toggleStatus(item)}
-                                                    className="focus:outline-none"
+                                                    className="focus:outline-none cursor-pointer"
                                                     title="Click to toggle status"
                                                 >
                                                     <StatusBadge status={item.status} />
                                                 </button>
                                             </td>
-                                            <td className="py-3 px-6 text-slate-400 font-medium whitespace-nowrap">
+                                            <td className="py-3 px-6 text-slate-500 dark:text-slate-400 font-medium whitespace-nowrap">
                                                 {item.published_at}
                                             </td>
                                             <td className="py-3 px-6 text-right">
                                                 <div className="flex items-center justify-end gap-2">
                                                     <button
                                                         onClick={() => openEditModal(item)}
-                                                        className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-400 hover:bg-indigo-500/10 transition-colors"
+                                                        className="p-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 transition-colors cursor-pointer"
                                                         title="Edit Article"
                                                     >
                                                         <Edit2 className="w-4 h-4" />
                                                     </button>
                                                     <button
                                                         onClick={() => handleDelete(item)}
-                                                        className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
+                                                        className="p-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 transition-colors cursor-pointer"
                                                         title="Delete Article"
                                                     >
                                                         <Trash2 className="w-4 h-4" />
@@ -319,9 +319,9 @@ export default function Index({ posts, categories, filters }) {
                                 ) : (
                                     <tr>
                                         <td colSpan="9" className="py-16 text-center text-slate-500">
-                                            <FileText className="w-10 h-10 mx-auto text-slate-600 mb-2 opacity-60" />
+                                            <FileText className="w-10 h-10 mx-auto text-slate-400 dark:text-slate-600 mb-2 opacity-60" />
                                             <p className="font-semibold text-sm">No articles match your search or filter criteria.</p>
-                                            <p className="text-xs text-slate-500 mt-1">Showing 0 total article(s)</p>
+                                            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Showing 0 total article(s)</p>
                                         </td>
                                     </tr>
                                 )}
@@ -348,7 +348,7 @@ export default function Index({ posts, categories, filters }) {
             >
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                             Article Title *
                         </label>
                         <input
@@ -357,20 +357,20 @@ export default function Index({ posts, categories, filters }) {
                             value={data.title}
                             onChange={(e) => setData('title', e.target.value)}
                             placeholder="e.g. Modern Architecture with Inertia and Laravel"
-                            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500"
+                            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                         />
-                        {errors.title && <p className="text-xs text-rose-400 mt-1">{errors.title}</p>}
+                        {errors.title && <p className="text-xs text-rose-500 mt-1">{errors.title}</p>}
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                                 Category
                             </label>
                             <select
                                 value={data.category_id}
                                 onChange={(e) => setData('category_id', e.target.value)}
-                                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500"
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                             >
                                 <option value="">Select Category</option>
                                 {categories.map((c) => (
@@ -382,7 +382,7 @@ export default function Index({ posts, categories, filters }) {
                         </div>
 
                         <div>
-                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                                 Estimated Read Time (mins)
                             </label>
                             <input
@@ -390,14 +390,14 @@ export default function Index({ posts, categories, filters }) {
                                 min="1"
                                 value={data.read_time}
                                 onChange={(e) => setData('read_time', parseInt(e.target.value) || 1)}
-                                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500"
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                             />
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                                 Cover Image URL
                             </label>
                             <input
@@ -405,12 +405,12 @@ export default function Index({ posts, categories, filters }) {
                                 value={data.cover_image}
                                 onChange={(e) => setData('cover_image', e.target.value)}
                                 placeholder="https://..."
-                                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500"
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                                 Tags (comma separated)
                             </label>
                             <input
@@ -418,13 +418,13 @@ export default function Index({ posts, categories, filters }) {
                                 value={data.tags}
                                 onChange={(e) => setData('tags', e.target.value)}
                                 placeholder="laravel,react,cloud"
-                                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500"
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                             />
                         </div>
                     </div>
 
                     <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                             Article Summary
                         </label>
                         <textarea
@@ -432,12 +432,12 @@ export default function Index({ posts, categories, filters }) {
                             value={data.summary}
                             onChange={(e) => setData('summary', e.target.value)}
                             placeholder="Short excerpt for social and listing previews..."
-                            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500"
+                            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                             Article Content
                         </label>
                         <textarea
@@ -445,7 +445,7 @@ export default function Index({ posts, categories, filters }) {
                             value={data.content}
                             onChange={(e) => setData('content', e.target.value)}
                             placeholder="Write full article markdown or body text..."
-                            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500"
+                            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                         />
                     </div>
 
@@ -456,9 +456,9 @@ export default function Index({ posts, categories, filters }) {
                                     type="checkbox"
                                     checked={data.is_featured}
                                     onChange={(e) => setData('is_featured', e.target.checked)}
-                                    className="w-4 h-4 rounded border-slate-700 bg-slate-900 text-indigo-600 focus:ring-indigo-500"
+                                    className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-indigo-600 focus:ring-indigo-500"
                                 />
-                                <span className="text-xs font-semibold text-slate-300">Featured Post</span>
+                                <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">Featured Post</span>
                             </label>
 
                             <label className="flex items-center gap-2 cursor-pointer">
@@ -470,7 +470,7 @@ export default function Index({ posts, categories, filters }) {
                                     onChange={() => setData('status', 'published')}
                                     className="text-indigo-600 focus:ring-indigo-500"
                                 />
-                                <span className="text-xs font-semibold text-emerald-400">Published</span>
+                                <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Published</span>
                             </label>
 
                             <label className="flex items-center gap-2 cursor-pointer">
@@ -482,7 +482,7 @@ export default function Index({ posts, categories, filters }) {
                                     onChange={() => setData('status', 'draft')}
                                     className="text-indigo-600 focus:ring-indigo-500"
                                 />
-                                <span className="text-xs font-semibold text-amber-400">Draft</span>
+                                <span className="text-xs font-semibold text-amber-600 dark:text-amber-400">Draft</span>
                             </label>
                         </div>
 
@@ -490,14 +490,14 @@ export default function Index({ posts, categories, filters }) {
                             <button
                                 type="button"
                                 onClick={() => setIsModalOpen(false)}
-                                className="px-4 py-2 rounded-xl border border-slate-700 text-xs font-semibold text-slate-300 hover:bg-slate-800"
+                                className="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
                             >
                                 Cancel
                             </button>
                             <button
                                 type="submit"
                                 disabled={processing}
-                                className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50"
+                                className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer"
                             >
                                 {editingPost ? 'Save Changes' : 'Publish Article'}
                             </button>

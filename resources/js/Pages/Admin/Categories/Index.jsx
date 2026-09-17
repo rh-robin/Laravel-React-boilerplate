@@ -67,16 +67,16 @@ export default function Index({ categories }) {
 
             <div className="space-y-6">
                 {/* Header Card */}
-                <div className="rounded-2xl bg-[#0F172A] border border-slate-800/80 p-6 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800/80 p-6 shadow-sm dark:shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div className="flex items-center gap-3.5">
-                        <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400">
+                        <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
                             <FolderKanban className="w-6 h-6" />
                         </div>
                         <div>
-                            <h2 className="text-xl font-bold text-white tracking-tight">
+                            <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
                                 Category Taxonomy
                             </h2>
-                            <p className="text-xs text-slate-400 mt-0.5">
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                                 Organize system blog articles and content clusters
                             </p>
                         </div>
@@ -84,7 +84,7 @@ export default function Index({ categories }) {
 
                     <button
                         onClick={openCreateModal}
-                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-xs tracking-wide bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-xs tracking-wide bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
                     >
                         <Plus className="w-4 h-4" />
                         <span>Add Category</span>
@@ -92,11 +92,11 @@ export default function Index({ categories }) {
                 </div>
 
                 {/* Categories Table */}
-                <div className="rounded-2xl bg-[#0F172A] border border-slate-800/80 shadow-xl overflow-hidden">
+                <div className="rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800/80 shadow-sm dark:shadow-xl overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="border-b border-slate-800/60 bg-slate-900/40 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                                <tr className="border-b border-slate-200 dark:border-slate-800/60 bg-slate-50/75 dark:bg-slate-900/40 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                                     <th className="py-3.5 px-6">NAME</th>
                                     <th className="py-3.5 px-6">SLUG</th>
                                     <th className="py-3.5 px-6">COLOR ACCENT</th>
@@ -105,11 +105,11 @@ export default function Index({ categories }) {
                                     <th className="py-3.5 px-6 text-right">ACTIONS</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-800/40 text-xs">
+                            <tbody className="divide-y divide-slate-100 dark:divide-slate-800/40 text-xs">
                                 {categories && categories.length > 0 ? (
                                     categories.map((cat) => (
-                                        <tr key={cat.id} className="hover:bg-slate-800/30 transition-colors">
-                                            <td className="py-3.5 px-6 font-semibold text-slate-200">
+                                        <tr key={cat.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                            <td className="py-3.5 px-6 font-semibold text-slate-800 dark:text-slate-200">
                                                 <div className="flex items-center gap-2.5">
                                                     <span
                                                         className="w-3 h-3 rounded-full"
@@ -118,10 +118,10 @@ export default function Index({ categories }) {
                                                     <span>{cat.name}</span>
                                                 </div>
                                             </td>
-                                            <td className="py-3.5 px-6 font-mono text-slate-400">
+                                            <td className="py-3.5 px-6 font-mono text-slate-500 dark:text-slate-400">
                                                 {cat.slug}
                                             </td>
-                                            <td className="py-3.5 px-6 font-mono text-slate-400">
+                                            <td className="py-3.5 px-6 font-mono text-slate-500 dark:text-slate-400">
                                                 <span
                                                     className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold"
                                                     style={{ backgroundColor: `${cat.color}20`, color: cat.color }}
@@ -129,24 +129,24 @@ export default function Index({ categories }) {
                                                     {cat.color}
                                                 </span>
                                             </td>
-                                            <td className="py-3.5 px-6 text-slate-300 font-semibold">
+                                            <td className="py-3.5 px-6 text-slate-700 dark:text-slate-300 font-semibold">
                                                 {cat.posts_count} articles
                                             </td>
-                                            <td className="py-3.5 px-6 text-slate-400 max-w-sm truncate">
+                                            <td className="py-3.5 px-6 text-slate-500 dark:text-slate-400 max-w-sm truncate">
                                                 {cat.description || '—'}
                                             </td>
                                             <td className="py-3.5 px-6 text-right">
                                                 <div className="flex items-center justify-end gap-2">
                                                     <button
                                                         onClick={() => openEditModal(cat)}
-                                                        className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-400 hover:bg-indigo-500/10 transition-colors"
+                                                        className="p-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 transition-colors cursor-pointer"
                                                         title="Edit Category"
                                                     >
                                                         <Edit2 className="w-4 h-4" />
                                                     </button>
                                                     <button
                                                         onClick={() => handleDelete(cat)}
-                                                        className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
+                                                        className="p-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 transition-colors cursor-pointer"
                                                         title="Delete Category"
                                                     >
                                                         <Trash2 className="w-4 h-4" />
@@ -176,7 +176,7 @@ export default function Index({ categories }) {
             >
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                             Category Name *
                         </label>
                         <input
@@ -185,13 +185,13 @@ export default function Index({ categories }) {
                             value={data.name}
                             onChange={(e) => setData('name', e.target.value)}
                             placeholder="e.g. Artificial Intelligence"
-                            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500"
+                            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                         />
-                        {errors.name && <p className="text-xs text-rose-400 mt-1">{errors.name}</p>}
+                        {errors.name && <p className="text-xs text-rose-500 mt-1">{errors.name}</p>}
                     </div>
 
                     <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                             Theme Color Accent
                         </label>
                         <div className="flex items-center gap-3">
@@ -199,7 +199,7 @@ export default function Index({ categories }) {
                                 type="color"
                                 value={data.color}
                                 onChange={(e) => setData('color', e.target.value)}
-                                className="w-10 h-10 rounded-lg cursor-pointer bg-slate-900 border border-slate-700"
+                                className="w-10 h-10 rounded-lg cursor-pointer bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700"
                             />
                             <div className="flex flex-wrap gap-1.5">
                                 {presetColors.map((color) => (
@@ -207,10 +207,10 @@ export default function Index({ categories }) {
                                         key={color}
                                         type="button"
                                         onClick={() => setData('color', color)}
-                                        className="w-6 h-6 rounded-full border-2 transition-transform hover:scale-110"
+                                        className="w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 cursor-pointer"
                                         style={{
                                             backgroundColor: color,
-                                            borderColor: data.color === color ? '#ffffff' : 'transparent',
+                                            borderColor: data.color === color ? '#6366f1' : 'transparent',
                                         }}
                                     />
                                 ))}
@@ -219,7 +219,7 @@ export default function Index({ categories }) {
                     </div>
 
                     <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                             Description
                         </label>
                         <textarea
@@ -227,7 +227,7 @@ export default function Index({ categories }) {
                             value={data.description}
                             onChange={(e) => setData('description', e.target.value)}
                             placeholder="Category summary and focus area..."
-                            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500"
+                            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                         />
                     </div>
 
@@ -235,14 +235,14 @@ export default function Index({ categories }) {
                         <button
                             type="button"
                             onClick={() => setIsModalOpen(false)}
-                            className="px-4 py-2 rounded-xl border border-slate-700 text-xs font-semibold text-slate-300 hover:bg-slate-800"
+                            className="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             disabled={processing}
-                            className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50"
+                            className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer"
                         >
                             {editingCategory ? 'Save Changes' : 'Create Category'}
                         </button>

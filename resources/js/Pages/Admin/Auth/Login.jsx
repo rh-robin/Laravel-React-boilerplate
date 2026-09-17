@@ -20,14 +20,14 @@ export default function Login() {
     }, []);
 
     const toggleTheme = () => {
-        if (isDark) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-            setIsDark(false);
-        } else {
+        const willBeDark = !isDark;
+        setIsDark(willBeDark);
+        if (willBeDark) {
             document.documentElement.classList.add('dark');
             localStorage.setItem('theme', 'dark');
-            setIsDark(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
         }
     };
 
@@ -45,18 +45,18 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-screen bg-[#070B14] text-slate-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden transition-colors duration-200 selection:bg-indigo-500 selection:text-white">
+        <div className="min-h-screen bg-slate-50 dark:bg-[#070B14] text-slate-900 dark:text-slate-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden transition-colors duration-200 selection:bg-indigo-500 selection:text-white">
             <Head title="Admin Login — TTECH SUITES" />
 
             {/* Glowing background elements */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-rose-600/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-600/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-rose-500/5 dark:bg-rose-600/10 rounded-full blur-3xl pointer-events-none" />
 
             {/* Header with Navigation & Theme Toggle */}
             <div className="absolute top-6 left-6 right-6 flex items-center justify-between z-10 max-w-5xl mx-auto">
                 <Link
                     href="/"
-                    className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
+                    className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
                 >
                     <ArrowLeft className="w-4 h-4" />
                     <span>Return to Portal</span>
@@ -65,9 +65,9 @@ export default function Login() {
                 <button
                     onClick={toggleTheme}
                     aria-label="Toggle theme"
-                    className="p-2.5 rounded-xl border border-slate-700/60 bg-slate-900/60 text-slate-300 hover:text-white transition-colors"
+                    className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-900/60 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-sm transition-colors cursor-pointer"
                 >
-                    {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-300" />}
+                    {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-600" />}
                 </button>
             </div>
 
@@ -78,24 +78,24 @@ export default function Login() {
                     <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-rose-500 via-indigo-600 to-indigo-400 shadow-xl shadow-indigo-600/30 ring-1 ring-white/20 mb-4">
                         <span className="font-black text-xl text-white tracking-wider">TT</span>
                     </div>
-                    <h2 className="text-2xl font-black text-white tracking-wider uppercase">
+                    <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-wider uppercase">
                         TTECH SUITES
                     </h2>
-                    <p className="mt-1 text-xs font-semibold text-slate-400 uppercase tracking-widest">
+                    <p className="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                         Administrative Console Access
                     </p>
                 </div>
 
                 {/* Form Container */}
-                <div className="mt-8 bg-[#0F172A] border border-slate-800/90 shadow-2xl rounded-3xl p-8 sm:p-10 backdrop-blur-xl">
+                <div className="mt-8 bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800/90 shadow-xl dark:shadow-2xl rounded-3xl p-8 sm:p-10 backdrop-blur-xl">
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Email Input */}
                         <div>
-                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
                                 Email Address
                             </label>
                             <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 dark:text-slate-500">
                                     <Mail className="w-4 h-4" />
                                 </div>
                                 <input
@@ -105,15 +105,15 @@ export default function Login() {
                                     value={data.email}
                                     onChange={(e) => setData('email', e.target.value)}
                                     placeholder="admin@admin.com"
-                                    className={`w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900/80 border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
+                                    className={`w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/80 border text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
                                         errors.email
                                             ? 'border-rose-500/80 focus:ring-rose-500/40'
-                                            : 'border-slate-700/70 focus:border-indigo-500 focus:ring-indigo-500/20'
+                                            : 'border-slate-200 dark:border-slate-700/70 focus:border-indigo-500 focus:ring-indigo-500/20'
                                     }`}
                                 />
                             </div>
                             {errors.email && (
-                                <p className="mt-1.5 text-xs text-rose-400 font-medium">
+                                <p className="mt-1.5 text-xs text-rose-500 font-medium">
                                     {errors.email}
                                 </p>
                             )}
@@ -121,11 +121,11 @@ export default function Login() {
 
                         {/* Password Input */}
                         <div>
-                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
                                 Password
                             </label>
                             <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 dark:text-slate-500">
                                     <Lock className="w-4 h-4" />
                                 </div>
                                 <input
@@ -135,22 +135,22 @@ export default function Login() {
                                     value={data.password}
                                     onChange={(e) => setData('password', e.target.value)}
                                     placeholder="••••••••"
-                                    className={`w-full pl-10 pr-11 py-3 rounded-xl bg-slate-900/80 border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
+                                    className={`w-full pl-10 pr-11 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/80 border text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${
                                         errors.password
                                             ? 'border-rose-500/80 focus:ring-rose-500/40'
-                                            : 'border-slate-700/70 focus:border-indigo-500 focus:ring-indigo-500/20'
+                                            : 'border-slate-200 dark:border-slate-700/70 focus:border-indigo-500 focus:ring-indigo-500/20'
                                     }`}
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-500 hover:text-slate-300 transition-colors"
+                                    className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors cursor-pointer"
                                 >
                                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                 </button>
                             </div>
                             {errors.password && (
-                                <p className="mt-1.5 text-xs text-rose-400 font-medium">
+                                <p className="mt-1.5 text-xs text-rose-500 font-medium">
                                     {errors.password}
                                 </p>
                             )}
@@ -163,14 +163,14 @@ export default function Login() {
                                     type="checkbox"
                                     checked={data.remember}
                                     onChange={(e) => setData('remember', e.target.checked)}
-                                    className="w-4 h-4 rounded border-slate-700 bg-slate-900 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-slate-900"
+                                    className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-white dark:focus:ring-offset-slate-900"
                                 />
-                                <span className="text-xs text-slate-400 font-medium">
+                                <span className="text-xs text-slate-600 dark:text-slate-400 font-medium">
                                     Remember my session
                                 </span>
                             </label>
 
-                            <span className="text-xs text-indigo-400 hover:underline cursor-pointer">
+                            <span className="text-xs text-indigo-600 dark:text-indigo-400 hover:underline cursor-pointer">
                                 Forgot password?
                             </span>
                         </div>
@@ -179,7 +179,7 @@ export default function Login() {
                         <button
                             type="submit"
                             disabled={processing}
-                            className="w-full py-3.5 px-4 rounded-xl font-bold text-sm tracking-wider uppercase bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-2"
+                            className="w-full py-3.5 px-4 rounded-xl font-bold text-sm tracking-wider uppercase bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-2 cursor-pointer"
                         >
                             {processing ? (
                                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -193,11 +193,11 @@ export default function Login() {
                     </form>
 
                     {/* Quick Seeded Admin Credentials Helper */}
-                    <div className="mt-6 pt-6 border-t border-slate-800">
+                    <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
                         <button
                             type="button"
                             onClick={fillAdminCredentials}
-                            className="w-full py-2.5 px-3 rounded-xl border border-indigo-500/20 bg-indigo-500/5 hover:bg-indigo-500/10 text-indigo-400 text-xs font-semibold flex items-center justify-center gap-2 transition-all"
+                            className="w-full py-2.5 px-3 rounded-xl border border-indigo-500/20 bg-indigo-50/50 dark:bg-indigo-500/5 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
                         >
                             <KeyRound className="w-3.5 h-3.5" />
                             <span>Auto-fill Demo Admin Credentials</span>
